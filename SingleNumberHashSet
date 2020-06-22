@@ -1,0 +1,23 @@
+import java.util.*;
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        Set<Integer> mySet = new HashSet<Integer>();
+        
+        int setSum = 0;
+        int wholeSum = 0;
+        
+        for(int ele : nums){
+            wholeSum += ele;
+            mySet.add(ele);
+        }
+        
+        for(int ele : mySet)
+            setSum += ele;
+        
+        return 2*setSum - wholeSum;
+        
+        
+}
+
+}
