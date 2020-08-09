@@ -1,0 +1,29 @@
+ import java.util.*;
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        char[] arr;
+        arr = s.toCharArray();
+        HashMap<Character,Integer> myMap = new HashMap<Character,Integer>();
+        int longest = 1;
+        
+        for(int i = 0 ; i < arr.length -1 ; i++){
+            myMap.put(arr[i],i);
+            int currLongest = 1;
+            for(int j = i + 1; j < arr.length; j++){
+                if(myMap.containsKey(arr[j])){
+                    myMap.clear();
+                    break;
+                } 
+                if(!myMap.containsKey(arr[j])){
+                    myMap.put(arr[j],j);
+                    currLongest++;
+                }
+                if(currLongest > longest)
+                    longest = currLongest;  
+            }    
+        }
+        return longest;
+        
+    }
+}
